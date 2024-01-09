@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>Firmen Login</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.fusername.label }}<br>
+            {{ form.fusername(size=32) }}<br>
+            {% for error in form.fusername.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.fpassword.label }}<br>
+            {{ form.fpassword(size=32) }}<br>
+            {% for error in form.fpassword.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    <p>New firm? <a href="{{ url_for('auth.registerf') }}"> Register here</a></p>
+{% endblock %}

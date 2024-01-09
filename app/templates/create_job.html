@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+  <h2>Job erstellen</h2>
+  <form method="post" action="{{ url_for('job.create_job') }}">
+    {{ form.hidden_tag() }}
+    {{ form.csrf_token }}
+    
+    <div class="form-group">
+      {{ form.stellenbezeichnung.label }}
+      {{ form.stellenbezeichnung(size=32, class='form-control') }}
+      {% for error in form.stellenbezeichnung.errors %}
+        <span style="color: red;">{{ error }}</span>
+      {% endfor %}
+    </div>
+
+    {% if current_user.is_firma %}
+      <!-- Automatische Einfügung der Firma für Firma-Benutzer -->
+      <div class="form-group">
+        {{ form.name.label }}
+        <input type="text" value="{{ current_user.name }}" readonly class="form-control">
+      </div>
+    {% else %}
+      <!-- Fehlermeldung, wenn der Benutzer keine Firma hat -->
+      <div class="alert alert-danger">
+        Sie müssen zuerst eine Firma erstellen, um einen Job hinzuzufügen.
+      </div>
+    {% endif %}
+    
+    <div class="form-group">
+        {{ form.qualifikationen.label }}
+        {{ form.qualifikationen(size=32, class='form-control') }}
+        {% for error in form.qualifikationen.errors %}
+          <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </div>
+      
+    <div class="form-group">
+        {{ form.standort.label }}
+        {{ form.standort(size=32, class='form-control') }}
+        {% for error in form.standort.errors %}
+          <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        {{ form.arbeitszeit.label }}
+        {{ form.arbeitszeit(size=32, class='form-control') }}
+        {% for error in form.arbeitszeit.errors %}
+          <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </div> 
+
+    <div class="form-group">
+        {{ form.vertrag.label }}
+        {{ form.vertrag(size=32, class='form-control') }}
+        {% for error in form.vertrag.errors %}
+          <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </div>
+    
+    <div class="form-group">
+        {{ form.vergütung.label }}
+        {{ form.vergütung(size=32, class='form-control') }}
+        {% for error in form.vergütung.errors %}
+          <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        {{ form.bewerbungsfrist.label }}
+        {{ form.bewerbungsfrist(size=32, class='form-control') }}
+        {% for error in form.bewerbungsfrist.errors %}
+          <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        {{ form.kontaktinformationen.label }}
+        {{ form.kontaktinformationen(size=32, class='form-control') }}
+        {% for error in form.kontaktinformationen.errors %}
+          <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        {{ form.stellenbeschreibung.label }}
+        {{ form.stellenbeschreibung(size=32, class='form-control') }}
+        {% for error in form.stellenbeschreibung.errors %}
+          <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </div>
+    <!-- <div class="form-group">
+      {{ form.submit(class='btn btn-primary') }}
+    </div> -->
+  </form>
+{% endblock %}

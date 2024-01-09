@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkPlace - Dein Karrierestart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #00BFFF;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #666;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #00BFFF;
+            color: #fff;
+            position: fixed;
+            width: 90%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>WorkPlace</h1>
+        <p>Dein Karrierestart</p>
+    </header>
+
+    <section>
+        <h2>Willkommen bei WorkPlace!</h2>
+        <p>Hier kannst du dich anmelden, um Jobangebote zu durchsuchen und Unternehmen zu folgen, um über offene Stellen informiert zu bleiben.</p>
+        <p>Starte noch heute deine Karriere und registriere dich <a href="{{ url_for('auth.register') }}">hier!</a></p>
+        <p>Du hast schon einen Account, dann logge dich <a href="{{ url_for('auth.login') }}">hier!</a> ein </p>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 WorkPlace</p>
+    </footer>
+</body>
+</html>
+
+{% endblock %}

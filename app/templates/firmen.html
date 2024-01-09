@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>Liste der Firmen</h1>
+    <ul>
+        {% for firma in firmen %}
+            <li>{{ firma.fusername }} - {{ firma.rechtsform }} - {{ firma.sitz }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

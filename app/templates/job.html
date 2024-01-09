@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+    <h1>Jobs</h1>
+    {% for job in jobs %}
+        <div class="job">
+            <h2>{{ job.stellenbezeichnung }}</h2>
+            <p>Stellenbeschreibung: {{ job.stellenbeschreibung }}</p>
+            <p>Qualifikationen: {{ job.qualifikationen }}</p>
+            <p>Arbeitszeit: {{ job.arbeitszeit }}</p>
+            <p>Vertrag: {{ job.vertrag }}</p>
+            <p>Vergütung: {{ job.vergütung }}</p>
+            <p>Bewerbungsfrist: {{ job.bewerbungsfrist }}</p>
+            <p>Kontaktinformationen: {{ job.kontaktinformationen }}</p>
+            {% if current_user.is_authenticated and not current_user.is_firma %}
+                <form method="post" action="{{ url_for('job.follow_job', job_id=job.id) }}">
+                    <button type="submit" class="btn btn-primary">Folgen</button>
+                </form>
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    {% if current_user.is_authenticated and current_user.is_firma %}
+        <a href="{{ url_for('job.create_job') }}" class="btn btn-success">Job erstellen</a>
+    {% endif %}
+{% endblock %}

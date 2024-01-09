@@ -1,0 +1,55 @@
+Struktur:
+
+
+> app
+    > auth                                  -> Login Bereich
+        > __init__.py                                                   -> A.1
+        > forms.py                                                      -> A.2
+        > routes.py
+
+    > firm
+        > __init__.py                                                   -> A.1
+        > routes.py
+
+    > home                                  -> Startseite
+        > __init__.py                                                   -> A.1
+        > routes.py          
+
+    > profil
+        > __init__.py                                                   -> A.1
+        > forms.py
+        > routes.py                                           
+
+    > templates                             -> HTML Templates
+        > base.html
+        > edit_profile.html
+        > edit_profilef.html
+        > home.html 
+        > login.html
+        > loginf.html
+        > profile.html
+        > profilef.html
+        > register.html
+        > registerf.html
+
+    __init__.py
+    models.py                               -> Datenbank Modell (Tabellen)
+
+> venv
+
+config.py
+Workplace.py
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+A.1
+Erklärung für die __init__.py Dateien in den Unterverzeichnissen:     
+Dieser Code erstellt einen sogenannten "Blueprint" in Flask, was eine Möglichkeit ist, eine Anwendung in mehrere Teile aufzuteilen, dieser wird in der
+__init__.py mit der Haupt-Flask-Anwendung verbunden. Dadurch kann die Anwendung verschiedene Teile oder Module haben, die jeweils ihre eigenen Routen 
+und Funktionen definieren, und diese werden dann mithilfe von Blueprints zu einer einzigen Anwendung kombiniert. THEMA BLUEPRINT
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+A.2
+Dieser Code definiert ein Formular (Form) für die Anmeldung (Login) in einer Flask-Anwendung. Genauer gesagt erstellt dieser Code ein Anmeldeformular 
+mit den Feldern Benutzername, Passwort und einer "Remember Me"-Checkbox für eine Flask-Anwendung unter Verwendung von Flask-WTF und WTForms.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
